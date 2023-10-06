@@ -54,6 +54,12 @@ scummVM="--ui-axismap x1=REL_X:10,y1=REL_Y:10 \
     --ui-buttonmap lb=KEY_S,rb=KEY_F,lt=KEY_W,rt=KEY_R \
     --ui-buttonmap back+start=KEY_LEFTALT+KEY_F4"
 
+pc="--ui-axismap x2=REL_X:10,y2=REL_Y:10 \
+    --ui-buttonmap tr=BTN_LEFT \
+    --ui-buttonmap back=KEY_ESC,start=KEY_LEFTCTRL+KEY_F1 \
+    --ui-buttonmap back+start=KEY_LEFTCTRL+KEY_F9 \
+    --ui-buttonmap lb=KEY_1,rb=KEY_2,lt=KEY_3,rt=KEY_4"
+
 atari="--axismap X1=DPAD_X,Y1=DPAD_Y \
 	--buttonmap B=A"
 
@@ -78,4 +84,8 @@ case $1 in
         joycommand="$drvHead $basicSN30 $scummVM $basicXbox $scummVM &"
         eval $joycommand
     ;;
+    pc)
+        eval $xboxkill
+        joycommand="$drvHead $basicSN30 $pc $basicXbox $pc &"
+        eval $joycommand
 esac
