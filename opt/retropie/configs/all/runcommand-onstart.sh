@@ -16,6 +16,11 @@
 #Get ROM name striping full path
 rom="${3##*/}"
 
+### Try to automatically find the correct event[•] of the connected controllers
+controller1=`cat /proc/bus/input/devices | egrep -i "js*" | sort | grep -o 'event[0-9]' | sed -n -e '1{p;q}'`
+controller2=`cat /proc/bus/input/devices | egrep -i "js*" | sort | grep -o 'event[0-9]' | sed -n -e '2{p;q}'`
+
+
 ### Set variables for your joypad and emulator
 ### Basic Configurations - Standard controller mappings
 drvHead="sudo /opt/retropie/supplementary/xboxdrv/bin/xboxdrv >> /dev/shm/runcommand.log 2>&1 \
@@ -23,13 +28,15 @@ drvHead="sudo /opt/retropie/supplementary/xboxdrv/bin/xboxdrv >> /dev/shm/runcom
 	--detach \
 	--dbus disabled \
 	--detach-kernel-driver"
-basicSN30="--id 0 \
+basicSN30="--evdev /dev/input/$controller1 \
+	--id 0 \
 	--device-name 'Player One' \
 	--led 2 \
 	--deadzone 4000 \
 	--silent \
 	--trigger-as-button"
 basicXbox="--next-controller \
+	--evdev /dev/input/$controller2 \
 	--id 1 \
 	--device-name 'Player Two'\
 	--led 3 \
@@ -39,9 +46,13 @@ basicXbox="--next-controller \
 
 ### Extended Configurations
 ### Specific emulator configuration or any other parameters you will need only for some emulators
-scummVM="--axismap -Y1=Y1,-Y2=Y2 \
-    --ui-axismap x1=REL_X:10,y1=REL_Y:10 \
-    --ui-buttonmap a=BTN_LEFT,b=BTN_RIGHT,start=KEY_F5,back=KEY_ESC"
+scummVM="--ui-axismap x1=REL_X:10,y1=REL_Y:10 \
+    --ui-axismap x2=REL_X:10,y2=REL_Y:10 \
+    --ui-buttonmap b=BTN_LEFT,a=BTN_RIGHT,x=KEY_Y,y=KEY_X,back=KEY_ESC \
+    --ui-buttonmap start=KEY_LEFTCTRL+KEY_F5 \
+    --ui-buttonmap du=KEY_UP,dd=KEY_DOWN,dl=KEY_LEFT,dr=KEY_RIGHT \
+    --ui-buttonmap lb=KEY_S,rb=KEY_F,lt=KEY_W,rt=KEY_R \
+    --ui-buttonmap back+start=KEY_LEFTALT+KEY_F4"
 
 atari="--axismap X1=DPAD_X,Y1=DPAD_Y \
 	--buttonmap B=A"
@@ -61,6 +72,10 @@ case $1 in
         eval $xboxkill
         joycommand="$drvHead $basicSN30 $atari $basicXbox $atari &"
         eval $joycommand
-	echo "==== EXECUTED:" $joycommand >> /dev/shm/runcommand.log 
+    ;;
+    scummvm)
+        eval $xboxkill
+        joycommand="$drvHead $basicSN30 $scummVM $basicXbox $scummVM &"
+        eval $joycommand
     ;;
 esac
