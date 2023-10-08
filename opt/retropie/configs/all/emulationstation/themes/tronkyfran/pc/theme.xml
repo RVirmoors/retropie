@@ -1,0 +1,42 @@
+<theme>
+    <formatVersion>3</formatVersion>
+    <include>./../simple.xml</include>
+
+	<view name="system">
+
+		<image name="background" extra="true">
+			<path>./art/pc1_art_blur.jpg</path>
+		</image>
+
+		<image name="logo">
+			<path>./art/msdos.svg</path>
+        </image>
+		
+	</view>
+
+	<view name="basic, detailed, video">
+
+		<image name="logo">
+			<path>./art/msdos.svg</path>
+			<pos>0.025 0.079</pos>
+			<maxSize>0.47 0.1</maxSize>
+			<origin>0 0.5</origin>
+		</image>
+
+	</view>
+
+	<view name="detailed">
+	
+<!-- <measuring rectangle 
+		<image name="measure" extra="true">
+			<pos>0.025 0.6</pos>
+			<origin>0 0</origin>
+			<size>0.125 0.301</size>
+			<path>./../art/white.png</path>
+			<color>ff00ff</color>
+		</image> 
+-->
+
+	</view>
+	
+</theme>

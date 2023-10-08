@@ -1,0 +1,28 @@
+<theme>
+    <formatVersion>3</formatVersion>
+    <include>./../simple.xml</include>
+
+	<view name="system">
+
+		<image name="background" extra="true">
+			<path>./art/snes_art_blur.jpg</path>
+		</image>
+
+		<image name="logo">
+			<path>./art/snes.svg</path>
+        </image>
+		
+	</view>
+
+	<view name="basic, detailed, video">
+
+		<image name="logo">
+			<path>./art/snes.svg</path>
+			<pos>0.025 0.0775</pos>
+			<maxSize>0.55 0.1</maxSize>
+			<origin>0 0.5</origin>
+		</image>
+
+	</view>
+	
+</theme>
