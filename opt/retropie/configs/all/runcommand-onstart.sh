@@ -60,6 +60,18 @@ pc="--ui-axismap x2=REL_X:10,y2=REL_Y:10 \
     --ui-buttonmap back+start=KEY_LEFTCTRL+KEY_F9 \
     --ui-buttonmap lb=KEY_1,rb=KEY_2,lt=KEY_3,rt=KEY_4"
 
+sm64="--axismap X1=DPAD_X,-Y1=DPAD_Y \
+      --ui-axismap X2=KEY_LEFT:KEY_RIGHT,Y2=KEY_UP:KEY_DOWN \
+      --ui-buttonmap b=KEY_L,a=KEY_COMMA,start=KEY_SPACE,y=KEY_DOT,rb=KEY_RIGHTSHIFT,lb=KEY_K,x=KEY_K \
+      --ui-buttonmap du=KEY_W,dd=KEY_S,dl=KEY_A,dr=KEY_D"
+
+pop="--ui-buttonmap du=KEY_UP,dd=KEY_DOWN \
+     --ui-buttonmap start=KEY_ESC,back=KEY_SPACE \
+     --ui-buttonmap dl=KEY_LEFT,dr=KEY_RIGHT,a=KEY_DOWN,b=KEY_UP,x=KEY_RIGHTSHIFT,lb=KEY_RIGHTSHIFT \
+     --ui-buttonmap back+start=KEY_LEFTCTRL+KEY_Q \
+     --ui-buttonmap back+lb=KEY_F9,back+rb=KEY_F6"
+
+
 atari="--axismap X1=DPAD_X,Y1=DPAD_Y \
 	--buttonmap B=A"
 
@@ -87,5 +99,15 @@ case $1 in
     pc)
         eval $xboxkill
         joycommand="$drvHead $basicSN30 $pc $basicXbox $pc &"
+        eval $joycommand
+    ;;
+    sm64ex)
+        eval $xboxkill
+        joycommand="$drvHead $basicSN30 $sm64 $basicXbox $sm64 &"
+        eval $joycommand    
+    ;;
+    sdlpop)
+        eval $xboxkill
+        joycommand="$drvHead $basicSN30 $pop $basicXbox $pop &"
         eval $joycommand
 esac
