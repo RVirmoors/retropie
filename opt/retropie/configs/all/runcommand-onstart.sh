@@ -71,6 +71,23 @@ pop="--ui-buttonmap du=KEY_UP,dd=KEY_DOWN \
      --ui-buttonmap back+start=KEY_LEFTCTRL+KEY_Q \
      --ui-buttonmap back+lb=KEY_F9,back+rb=KEY_F6"
 
+aw="--ui-buttonmap du=KEY_UP,dd=KEY_DOWN \
+     --ui-buttonmap start=KEY_P,back=KEY_SPACE \
+     --ui-buttonmap dl=KEY_LEFT,dr=KEY_RIGHT,a=KEY_SPACE,b=KEY_UP,x=KEY_DOWN \
+     --ui-buttonmap back+start=KEY_LEFTALT+KEY_X \
+     --ui-buttonmap back+lb=KEY_C,back+rb=KEY_C"
+
+fps="--ui-axismap X1=KEY_S:KEY_F,Y1=KEY_E:KEY_D \
+    --ui-axismap x2=REL_X:10,y2=REL_Y:10 \
+    --ui-buttonmap start=KEY_ESC,back=KEY_ENTER,back+start=KEY_F10 \
+    --ui-buttonmap du=KEY_UP,dd=KEY_DOWN,dl=KEY_LEFT,dr=KEY_RIGHT \
+    --ui-buttonmap b=KEY_TAB,a=KEY_SPACE,y=KEY_APOSTROPHE,x=KEY_SEMICOLON \
+    --ui-buttonmap tl+x=KEY_LEFTBRACE,tl+y=KEY_RIGHTBRACE,tl+b=KEY_ENTER,tl=KEY_Y,tr=BTN_LEFT \
+    --ui-buttonmap rb=BTN_RIGHT,lb=BTN_LEFT,rt=KEY_LEFTALT,lt=KEY_X \
+    --ui-buttonmap back+lb=KEY_F9,back+rb=KEY_F6"
+
+pico="--ui-buttonmap du=KEY_UP,dd=KEY_DOWN,dl=KEY_LEFT,dr=KEY_RIGHT \
+	--ui-buttonmap back+start=KEY_LEFTCTRL+KEY_Q"
 
 atari="--axismap X1=DPAD_X,Y1=DPAD_Y \
 	--buttonmap B=A"
@@ -101,6 +118,11 @@ case $1 in
         joycommand="$drvHead $basicSN30 $pc $basicXbox $pc &"
         eval $joycommand
     ;;
+    pico8)
+        eval $xboxkill
+        joycommand="$drvHead $basicSN30 $pico $basicXbox $pico &"
+        eval $joycommand
+    ;;
     sm64ex)
         eval $xboxkill
         joycommand="$drvHead $basicSN30 $sm64 $basicXbox $sm64 &"
@@ -109,5 +131,40 @@ case $1 in
     sdlpop)
         eval $xboxkill
         joycommand="$drvHead $basicSN30 $pop $basicXbox $pop &"
+        eval $joycommand
+    ;;
+    rawgl)
+        eval $xboxkill
+        joycommand="$drvHead $basicSN30 $aw $basicXbox $aw &"
+        eval $joycommand
+    ;;
+    nblood)
+        eval $xboxkill
+        joycommand="$drvHead $basicSN30 $fps $basicXbox $fps &"
+        eval $joycommand
+    ;;
+    hexen2)
+        eval $xboxkill
+        joycommand="$drvHead $basicSN30 $fps $basicXbox $fps &"
+        eval $joycommand
+    ;;
+    duke3d)
+        eval $xboxkill
+        joycommand="$drvHead $basicSN30 $fps $basicXbox $fps &"
+        eval $joycommand
+    ;;
+    quake)
+        eval $xboxkill
+        joycommand="$drvHead $basicSN30 $fps $basicXbox $fps &"
+        eval $joycommand
+    ;;
+    quake2)
+        eval $xboxkill
+        joycommand="$drvHead $basicSN30 $fps $basicXbox $fps &"
+        eval $joycommand
+    ;;
+    quake3)
+        eval $xboxkill
+        joycommand="$drvHead $basicSN30 $fps $basicXbox $fps &"
         eval $joycommand
 esac
