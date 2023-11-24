@@ -48,15 +48,15 @@ basicXbox="--next-controller \
 ### Specific emulator configuration or any other parameters you will need only for some emulators
 scummVM="--ui-axismap x1=REL_X:10,y1=REL_Y:10 \
     --ui-axismap x2=REL_X:10,y2=REL_Y:10 \
-    --ui-buttonmap b=BTN_LEFT,a=BTN_RIGHT,x=KEY_Y,y=KEY_X,back=KEY_ESC \
-    --ui-buttonmap start=KEY_LEFTCTRL+KEY_F5 \
+    --ui-buttonmap b=BTN_LEFT,a=BTN_RIGHT,x=KEY_Y,y=KEY_X \
+    --ui-buttonmap start=KEY_ESC,back=KEY_ENTER,back+y=KEY_LEFTCTRL+KEY_F5 \
     --ui-buttonmap du=KEY_UP,dd=KEY_DOWN,dl=KEY_LEFT,dr=KEY_RIGHT \
     --ui-buttonmap lb=KEY_S,rb=KEY_F,lt=KEY_W,rt=KEY_R \
     --ui-buttonmap back+start=KEY_LEFTALT+KEY_F4"
 
 pc="--ui-axismap x2=REL_X:10,y2=REL_Y:10 \
     --ui-buttonmap tr=BTN_LEFT \
-    --ui-buttonmap back=KEY_ESC,start=KEY_LEFTCTRL+KEY_F1 \
+    --ui-buttonmap start=KEY_ESC,back=KEY_ENTER,back+y=KEY_LEFTCTRL+KEY_F1 \
     --ui-buttonmap back+start=KEY_LEFTCTRL+KEY_F9 \
     --ui-buttonmap lb=KEY_1,rb=KEY_2,lt=KEY_3,rt=KEY_4"
 
@@ -87,7 +87,7 @@ fps="--ui-axismap X1=KEY_S:KEY_F,Y1=KEY_E:KEY_D \
     --ui-buttonmap back+lb=KEY_F9,back+rb=KEY_F6"
 
 pico="--ui-buttonmap du=KEY_UP,dd=KEY_DOWN,dl=KEY_LEFT,dr=KEY_RIGHT \
-	--ui-buttonmap back+start=KEY_LEFTCTRL+KEY_Q"
+	--ui-buttonmap back+start=KEY_LEFTCTRL+KEY_Q,start=KEY_ENTER"
 
 atari="--axismap X1=DPAD_X,Y1=DPAD_Y \
 	--buttonmap B=A"
